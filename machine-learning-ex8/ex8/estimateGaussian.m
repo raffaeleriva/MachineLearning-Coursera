@@ -21,11 +21,10 @@ sigma2 = zeros(n, 1);
 %               should contain variance of the i-th feature.
 %
 
-
-
-mu = mean(X,1);
-
-sigma2 = var(X,1)*((m-1)/m); % correction factor: Octave var function uses 1/(m-1), we need m instead
+for j = 1 : n
+  mu(j,:) = sum(X(:,j))/m;
+  sigma2(j,:) = sum((X(:,j)-mu(j)).^2)/m;
+end
 
 
 % =============================================================
